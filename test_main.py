@@ -1,8 +1,9 @@
-from pytest import mark
+from pytest import mark, fixture
+from fastapi import FastAPI
 import sys
 
 
-@mark.tag  # Define um grupo para ser testado, nesse caso, tag
+@mark.grup  # Define um grupo para ser testado, nesse caso, tag
 def tag_ann():
     assert True
 
@@ -38,3 +39,18 @@ def teste_skip():
 )  # Pula o teste mediante condição
 def teste_skip_if_platform_windows():
     assert True
+
+# Fixture do pytest que captura e testa saidas
+def teste_output(capsys):
+    print("Pytest é top!")
+    captured = capsys.readouterr()
+    # Print pula linha, por isso \n
+    assert captured.out == "Pytest é top!\n"
+
+@fixture
+def fixture_fastapi():
+    return FastAPI()
+
+# Carrega um módulo pra ser testado
+def test_fixture_fastapi(fixture_fastapi):
+    print(fixture_fastapi)

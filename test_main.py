@@ -22,7 +22,7 @@ def teste_return_true_if_number_is_pair_2(entrada, esperado):
 
 
 @mark.xfail(
-    sys.platform != "win32", reason="Não deve rodar em windows"
+    sys.platform != "win32", reason="Deve falhar em windows"
 )  # Espera uma falha, é usado em casos específico, ex: deve rodar só em linux..
 def teste_fail_if_platform_windows():
     assert True

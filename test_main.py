@@ -1,5 +1,6 @@
-from pytest import mark, fixture
-from fastapi import FastAPI
+from pytest import mark
+from conftest import fixture_fastapi
+
 import sys
 
 
@@ -47,9 +48,7 @@ def teste_output(capsys):
     # Print pula linha, por isso \n
     assert captured.out == "Pytest é top!\n"
 
-@fixture
-def fixture_fastapi():
-    return FastAPI()
+
 
 # Carrega um módulo pra ser testado
 def test_fixture_fastapi(fixture_fastapi):

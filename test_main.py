@@ -41,13 +41,13 @@ def teste_skip():
 def teste_skip_if_platform_windows():
     assert True
 
+
 # Fixture do pytest que captura e testa saidas
 def teste_output(capsys):
     print("Pytest é top!")
     captured = capsys.readouterr()
     # Print pula linha, por isso \n
     assert captured.out == "Pytest é top!\n"
-
 
 
 # Carrega um módulo pra ser testado
